@@ -18,7 +18,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -173,74 +173,111 @@
 
   /* hero */
   .hero{
-    padding:88px 0 96px;
+    min-height:720px;
+    height:calc(100svh - 110px);
+    max-height:980px;
     position:relative;
     overflow:hidden;
+    color:var(--white);
+    background:#1B2819;
+    isolation:isolate;
   }
-  .hero-shape{
+  .hero-media{
     position:absolute;
-    top:-140px;
-    right:-160px;
-    width:480px;
-    height:480px;
-    border-radius:44% 56% 62% 38% / 48% 40% 60% 52%;
-    background:radial-gradient(circle at 35% 30%, #6F8267 0%, #4C5E47 65%, transparent 100%);
-    opacity:0.16;
-    z-index:0;
+    inset:-12% 0;
+    z-index:-3;
+    will-change:transform;
   }
-  .hero-inner{position:relative; z-index:1; max-width:620px;}
+  .hero-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 58%;
+  }
+  .hero-shade{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+      linear-gradient(90deg, rgba(9,18,11,0.82) 0%, rgba(9,18,11,0.58) 48%, rgba(9,18,11,0.2) 100%),
+      linear-gradient(0deg, rgba(9,18,11,0.56), transparent 44%);
+  }
+  .hero-copy{
+    position:relative;
+    padding:88px 32px 132px;
+    max-width:920px;
+    margin:0 auto;
+    will-change:transform;
+  }
+  .hero-inner{max-width:760px;}
   .eyebrow-plain{
-    font-size:0.95rem;
-    color:var(--clay);
-    margin-bottom:18px;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.14em;
+    color:#E0E8D6;
+    margin-bottom:26px;
+    text-transform:uppercase;
   }
   .hero h1{
-    font-size:clamp(2.1rem, 4.4vw, 3.1rem);
-    line-height:1.16;
-    max-width:11.5em;
+    font-family:"Barlow Condensed", sans-serif;
+    font-size:clamp(3.8rem, 8vw, 7.2rem);
+    font-weight:800;
+    line-height:0.92;
+    letter-spacing:-0.012em;
+    text-transform:uppercase;
+    color:var(--white);
+    max-width:13ch;
+  }
+  .hero h1 em{
+    color:#D4E7A5;
+    font-style:normal;
   }
   .hero p.sub{
-    margin-top:22px;
-    font-size:1.1rem;
-    color:var(--ink-soft);
-    max-width:34em;
+    margin-top:24px;
+    font-size:1.12rem;
+    color:#E7ECE0;
+    max-width:37em;
   }
   .creds-line{
-    margin-top:28px;
-    font-size:0.95rem;
-    color:var(--sage-deep);
+    margin-top:24px;
+    font-size:0.93rem;
+    color:#E0E8D6;
   }
   .creds-line .alt{
     display:block;
-    color:var(--ink-soft);
-    font-size:0.88rem;
+    color:#C5CFBC;
+    font-size:0.86rem;
     margin-top:4px;
   }
   .cta-row{
-    margin-top:36px;
+    margin-top:32px;
     display:flex;
-    gap:16px;
+    gap:14px;
     flex-wrap:wrap;
   }
   .btn{
-    display:inline-block;
-    padding:13px 26px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 24px;
     border-radius:2px;
     text-decoration:none;
-    font-size:0.95rem;
-    border:1px solid var(--sage-deep);
-    transition:background 0.2s ease, color 0.2s ease;
+    font-size:0.9rem;
+    font-weight:600;
+    border:1px solid transparent;
+    transition:background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
   .btn-solid{
-    background:var(--sage-deep);
-    color:var(--white);
+    background:#D4E7A5;
+    color:#132410;
   }
-  .btn-solid:hover{background:var(--sage);}
+  .btn-solid:hover{background:#E1EFBF;transform:translateY(-2px);}
   .btn-outline{
-    color:var(--sage-deep);
+    color:var(--white);
     background:transparent;
+    border-color:#D5DDD1;
   }
-  .btn-outline:hover{background:var(--paper-deep);}
+  .btn-outline:hover{background:rgba(255,255,255,0.1);}
 
   /* badges */
   .badges{
@@ -250,12 +287,78 @@
     margin-top:30px;
   }
   .badges span{
-    background:var(--paper-deep);
-    border:1px solid var(--line);
-    color:var(--sage-deep);
+    background:rgba(7, 19, 10, 0.52);
+    border:1px solid rgba(213, 221, 209, 0.6);
+    color:#F3F6EF;
     padding:6px 13px;
-    font-size:0.85rem;
+    font-size:0.82rem;
     border-radius:2px;
+  }
+  .hero-foot{
+    position:absolute;
+    bottom:26px;
+    left:32px;
+    right:32px;
+    max-width:920px;
+    margin:0 auto;
+    border-top:1px solid rgba(213, 221, 209, 0.55);
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding-top:18px;
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#DFE7D8;
+  }
+  .hero-stamp{
+    position:absolute;
+    right:32px;
+    bottom:138px;
+    border-left:2px solid #D4E7A5;
+    padding-left:18px;
+    display:flex;
+    flex-direction:column;
+    font-family:"Barlow Condensed", sans-serif;
+    font-size:1.5rem;
+    line-height:1.02;
+    letter-spacing:0.01em;
+    color:#F2F6EC;
+    will-change:transform;
+  }
+  @media (max-width:900px){
+    .hero{min-height:690px;}
+    .hero-stamp{display:none;}
+  }
+  @media (max-width:640px){
+    .hero{
+      height:auto;
+      min-height:710px;
+      max-height:none;
+    }
+    .hero-copy{
+      padding:86px 24px 120px;
+    }
+    .hero h1{
+      font-size:4.5rem;
+      line-height:0.94;
+    }
+    .hero p.sub{
+      font-size:1rem;
+      max-width:unset;
+    }
+    .btn{
+      width:100%;
+      padding:14px 20px;
+    }
+    .hero-foot{
+      left:24px;
+      right:24px;
+      font-size:0.7rem;
+      letter-spacing:0.05em;
+      flex-direction:column;
+      gap:8px;
+    }
   }
 
   /* section framing */
@@ -545,29 +648,41 @@
 </div>
 
 <header>
-  <div class="wrap hero">
-    <div class="hero-shape"></div>
-    <div class="hero-inner">
-      <div class="eyebrow-plain">Individual therapy &amp; a weekly skills group in Littleton, MA</div>
-      <h1>A steady place to work through what's underneath.</h1>
-      <p class="sub">I help people identify and move through past and current distress — anxiety, trauma, grief — using EMDR, Sensorimotor Psychotherapy, and Internal Family Systems, grounded in mindfulness and current research in neuroscience.</p>
-      <div class="creds-line">
-        Smita Chaddha, MA, MS, LMHC — Licensed in Massachusetts, #3829
-        <span class="alt">NPI 1962504332 · Boston University, Class of 1991 · Also speaks Hindi</span>
-      </div>
-      <div class="badges">
-        <span>EMDRIA Certified Therapist™</span>
-        <span>EMDRIA Approved Consultant™</span>
-        <span>In-person &amp; online</span>
-        <span>English &amp; Hindi</span>
-        <span>Teens, adults &amp; older adults</span>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="tel:+19788087269">Call (978) 808-7269</a>
-        <a class="btn btn-outline" href="mailto:smita@achaddha.com">Email for a free 15-minute consultation</a>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media" data-depth="0.18">
+      <img src="https://github.com/user-attachments/assets/a3843fb7-f9f0-4b92-b313-b197921aa439" alt="Street view of the Littleton, Massachusetts office location" fetchpriority="high">
+    </div>
+    <div class="hero-shade"></div>
+    <div class="hero-copy wrap" data-depth="0.07">
+      <div class="hero-inner">
+        <div class="eyebrow-plain">Individual therapy &amp; weekly DBT skills group in Littleton, MA</div>
+        <h1 id="hero-title">Move through trauma.<br><em>Feel steady again.</em></h1>
+        <p class="sub">Evidence-based care for anxiety, grief, and trauma using EMDR, Sensorimotor Psychotherapy, and Internal Family Systems in a warm, practical setting.</p>
+        <div class="creds-line">
+          Smita Chaddha, MA, MS, LMHC — Licensed in Massachusetts, #3829
+          <span class="alt">NPI 1962504332 · Boston University, Class of 1991 · English &amp; Hindi</span>
+        </div>
+        <div class="badges">
+          <span>EMDRIA Certified Therapist™</span>
+          <span>EMDRIA Approved Consultant™</span>
+          <span>In-person in Littleton + secure online sessions</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="tel:+19788087269">Call for a free 15-minute consultation</a>
+          <a class="btn btn-outline" href="mailto:smita@achaddha.com">Email Smita now</a>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="hero-foot">
+      <span>Teens, adults, and older adults</span>
+      <span>Insurance support and private-pay options</span>
+    </div>
+    <div class="hero-stamp" data-depth="-0.06" aria-hidden="true">
+      <span>EMDR</span>
+      <span>SENSORIMOTOR</span>
+      <span>IFS</span>
+    </div>
+  </section>
 </header>
 
 <main id="main">
@@ -875,6 +990,46 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const layers = [...document.querySelectorAll('[data-depth]')];
+    const hero = document.querySelector('.hero');
+    if (!hero || layers.length === 0) return;
+
+    let current = window.scrollY;
+    let frame = 0;
+
+    function paint() {
+      frame = 0;
+      if (reduce.matches) {
+        layers.forEach((el) => {
+          el.style.transform = '';
+        });
+        return;
+      }
+
+      const target = Math.min(window.scrollY, hero.offsetHeight);
+      current += (target - current) * 0.12;
+      const mobile = window.innerWidth < 641 ? 0.55 : 1;
+
+      layers.forEach((el) => {
+        el.style.transform = `translate3d(0, ${(current * Number(el.dataset.depth) * mobile).toFixed(2)}px, 0)`;
+      });
+
+      if (Math.abs(target - current) > 0.1) {
+        frame = window.requestAnimationFrame(paint);
+      }
+    }
+
+    function schedule() {
+      if (!frame) frame = window.requestAnimationFrame(paint);
+    }
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    reduce.addEventListener('change', schedule);
+    schedule();
+  })();
 </script>
 
 </body>
