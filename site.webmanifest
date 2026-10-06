@@ -1,0 +1,23 @@
+{
+  "name": "Smita Chaddha, MA, MS, LMHC",
+  "short_name": "Smita Chaddha LMHC",
+  "description": "Trauma and EMDR therapy in Littleton, Massachusetts. Licensed mental health counselor, LMHC #3829.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F1ECE1",
+  "theme_color": "#3E4E3A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
