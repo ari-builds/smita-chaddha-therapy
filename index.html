@@ -61,7 +61,7 @@
       "description": "Licensed mental health counselor in Littleton, Massachusetts, specialising in trauma and EMDR. Trained in a nine-month trauma programme under Bessel van der Kolk and a year-long Sensorimotor Psychotherapy training, and certified by EMDRIA as both a therapist and an approved consultant.",
       "url": "https://ari-builds.github.io/smita-chaddha-therapy/",
       "email": "smita@achaddha.com",
-      "telephone": "+1-978-808-7269",
+      "telephone": "+19788087269",
       "image": "https://ari-builds.github.io/smita-chaddha-therapy/assets/og-image.jpg",
       "priceRange": "$$",
       "currenciesAccepted": "USD",
@@ -262,39 +262,67 @@
   }
 
   /* ============ hero ============ */
-  .hero{padding:76px 0 88px;position:relative;overflow:hidden;}
-  .hero-shape{
-    position:absolute;top:-160px;right:-180px;width:520px;height:520px;z-index:0;
-    border-radius:44% 56% 62% 38% / 48% 40% 60% 52%;
-    background:radial-gradient(circle at 35% 30%,#6F8267 0%,#4C5E47 65%,transparent 100%);
-    opacity:.15;
+  /* Full-bleed photo hero. Text is NEVER transformed here: only the
+     decorative media layer moves on scroll, which is what removes the
+     copy-vs-next-section collision the deployed build had. */
+  .hero{
+    position:relative;z-index:1;isolation:isolate;overflow:hidden;
+    padding:104px 0 112px;min-height:min(76vh,740px);
+    display:flex;align-items:center;
   }
-  .hero-grid{display:grid;grid-template-columns:1fr 232px;gap:48px;align-items:start;position:relative;z-index:1;}
-  .eyebrow-plain{font-size:.78rem;color:var(--clay);margin-bottom:18px;text-transform:uppercase;letter-spacing:.12em;}
-  .hero h1{font-size:clamp(2.15rem,4.6vw,3.15rem);max-width:12em;}
-  .hero h1 em{font-style:italic;color:var(--sage);}
-  .hero p.sub{margin-top:22px;font-size:1.08rem;color:var(--ink-soft);max-width:36em;font-weight:300;}
-  .creds-line{margin-top:26px;font-size:.93rem;color:var(--sage-deep);font-weight:500;}
-  .creds-line .alt{display:block;color:var(--ink-soft);font-size:.85rem;margin-top:5px;font-weight:400;}
+  .hero-media{
+    position:absolute;inset:-10% 0;z-index:-2;
+    will-change:transform;transform:translate3d(0,0,0);
+    background:var(--sage-deep);
+  }
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 54%;display:block;}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:-1;
+    background:
+      linear-gradient(100deg, rgba(24,32,24,.90) 0%, rgba(26,34,26,.74) 44%, rgba(28,36,28,.42) 100%),
+      linear-gradient(to bottom, rgba(20,27,20,.55) 0%, rgba(20,27,20,0) 30%, rgba(20,27,20,.45) 100%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1fr;gap:48px;align-items:center;
+    position:relative;z-index:1;width:100%;
+  }
+  .hero-inner{max-width:780px;}
+  .eyebrow-plain{
+    font-size:.78rem;color:#D4E7A5;margin-bottom:18px;
+    text-transform:uppercase;letter-spacing:.14em;
+  }
+  .hero h1{font-size:clamp(2.2rem,4.8vw,3.35rem);max-width:13em;color:#FBFAF6;}
+  .hero h1 em{font-style:italic;color:#D4E7A5;}
+  .hero p.sub{
+    margin-top:22px;font-size:1.08rem;color:#E4EADF;max-width:38em;font-weight:300;
+    text-shadow:0 1px 2px rgba(0,0,0,.35);
+  }
+  .creds-line{
+    margin-top:26px;font-size:.93rem;color:#FBFAF6;font-weight:500;
+    text-shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+  .creds-line .alt{display:block;color:#CFD8C9;font-size:.85rem;margin-top:5px;font-weight:400;}
   .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
   .badges span{
-    background:var(--paper-deep);border:1px solid var(--line);color:var(--sage-deep);
+    background:rgba(251,250,246,.12);border:1px solid rgba(251,250,246,.34);color:#EDF1E7;
     padding:6px 13px;font-size:.82rem;border-radius:var(--radius);
+    backdrop-filter:blur(2px);
   }
   .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
   .btn{
     display:inline-flex;align-items:center;gap:9px;
     padding:14px 26px;border-radius:var(--radius);text-decoration:none;
-    font-size:.94rem;border:1px solid var(--sage-deep);
+    font-size:.94rem;border:1px solid transparent;
     transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
   }
   .btn svg{flex:none;width:16px;height:16px;}
-  .btn-solid{background:var(--sage-deep);color:var(--white);box-shadow:var(--shadow);}
-  .btn-solid:hover{background:var(--sage);transform:translateY(-1px);}
-  .btn-outline{color:var(--sage-deep);background:transparent;}
-  .btn-outline:hover{background:var(--paper-deep);}
+  .btn-solid{background:var(--white);color:var(--sage-deep);box-shadow:0 8px 26px -12px rgba(0,0,0,.7);}
+  .btn-solid:hover{background:#EDE7D9;transform:translateY(-1px);}
+  .btn-outline{color:#FBFAF6;border-color:rgba(251,250,246,.62);background:transparent;}
+  .btn-outline:hover{background:rgba(251,250,246,.14);}
+  .btn:focus-visible{outline:2px solid #D4E7A5;outline-offset:3px;}
 
-  /* portrait */
+  /* portrait card, kept off the hero and used inside About instead */
   .portrait{position:relative;}
   .portrait-frame{
     border:1px solid var(--line);background:var(--paper-deep);
@@ -306,9 +334,15 @@
     border-left:2px solid var(--clay);padding-left:12px;
   }
   @media (max-width:820px){
-    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero{padding:74px 0 82px;min-height:0;}
+    .hero-grid{gap:34px;}
+    .hero-scrim{
+      background:
+        linear-gradient(180deg, rgba(22,30,22,.86) 0%, rgba(24,32,24,.78) 60%, rgba(24,32,24,.86) 100%);
+    }
     .portrait{max-width:260px;}
   }
+
 
   /* ============ sections ============ */
   section{padding:66px 0;border-top:1px solid var(--line);position:relative;z-index:1;}
@@ -463,20 +497,34 @@
   .colophon{margin-top:18px;font-size:.78rem;color:#8a8f85;}
 
   /* reveal */
-  .rv{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);}
-  .rv.in{opacity:1;transform:none;}
+  /* Reveal is opt-IN via html.reveal, set by the head snippet below.
+     If site.js never loads, that class is removed by a failsafe timer, so
+     content can never be left permanently invisible. */
+  .rv{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);}
+  html.reveal .rv{opacity:0;transform:translateY(14px);}
+  html.reveal .rv.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    .rv{opacity:1;transform:none;transition:none;}
+    .rv,html.reveal .rv{opacity:1;transform:none;transition:none;}
     *{animation:none!important;transition-duration:.01ms!important;}
   }
 
   @media print{
-    .brandbar nav,.cta-row,.mobile-bar,.final-cta,.hero-shape{display:none;}
+    .brandbar nav,.cta-row,.mobile-bar,.final-cta,.hero-media,.hero-scrim{display:none;}
     body{background:#fff;}
     .faq-item .answer{display:block!important;}
   }
 </style>
+<script>
+/* Arms scroll-reveal before first paint. Failsafe: if site.js never runs
+   (404, blocked, error), reveal is switched back off so no content can be
+   left permanently invisible. With JS disabled this script never executes
+   either, so content stays visible. */
+document.documentElement.classList.add('reveal');
+window.__revealFailsafe = setTimeout(function () {
+  document.documentElement.classList.remove('reveal');
+}, 3000);
+</script>
 </head>
 <body>
 
@@ -496,7 +544,13 @@
 
 <header>
   <div class="wrap hero">
-    <div class="hero-shape" aria-hidden="true"></div>
+    <div class="hero-media" aria-hidden="true">
+      <picture>
+        <source srcset="assets/hero-enhanced.webp" type="image/webp">
+        <img src="assets/hero-enhanced.jpg" alt="" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-grid">
       <div class="hero-inner">
         <div class="eyebrow-plain">Littleton, Massachusetts · Individual &amp; group</div>
@@ -523,18 +577,10 @@
           </a>
         </div>
       </div>
-
-      <div class="portrait">
-        <div class="portrait-frame">
-          <!-- Drop a real headshot at assets/smita-chaddha.jpg and it replaces the placeholder automatically. -->
-          <img src="assets/photo-placeholder.jpg" alt="Portrait of Smita Chaddha, MA, MS, LMHC, licensed mental health counselor in Littleton, Massachusetts"
-               onerror="this.src='assets/photo-placeholder.jpg'">
-        </div>
-        <p class="portrait-cap">Sessions in Littleton and online. Free 15-minute consultation before committing.</p>
-      </div>
     </div>
   </div>
 </header>
+
 
 <main id="main">
 
@@ -788,7 +834,7 @@
           <div class="pname">Massachusetts Board of Allied Mental Health Professionals</div>
           <span class="pdesc">Official state license lookup — search LMHC #3829 to confirm the license is current</span>
         </div>
-        <a href="https://mhc.mass.gov/lookup" target="_blank" rel="noopener noreferrer">Verify license</a>
+        <a href="https://www.mass.gov/orgs/board-of-registration-of-allied-mental-health-and-human-services-professions" target="_blank" rel="noopener noreferrer">Verify license</a>
       </div>
       <div class="profile-row">
         <div>
@@ -862,29 +908,7 @@
   <a class="mail" href="mailto:smita@achaddha.com">Email</a>
 </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Real photo wins over placeholder when present.
-  var hero = document.querySelector('.portrait-frame img');
-  var real = new Image();
-  real.onload = function () { hero.src = 'assets/smita-chaddha.jpg'; };
-  real.src = 'assets/smita-chaddha.jpg';
-
-  // Gentle scroll reveal, skipped when reduced motion is requested.
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var items = document.querySelectorAll('.rv');
-  if (!reduce && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-    items.forEach(function (el) { io.observe(el); });
-  } else {
-    items.forEach(function (el) { el.classList.add('in'); });
-  }
-</script>
+<script src="site.js" defer></script>
 
 </body>
 </html>
