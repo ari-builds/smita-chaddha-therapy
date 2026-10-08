@@ -352,7 +352,7 @@ html.reveal .rv.in{opacity:1;transform:none;}
 }
 @media (max-width:880px){
   :root{--pad:6%;}
-  .site-nav,.head-actions .btn-green{display:none;}
+  .site-nav,.head-actions .btn{display:none;}
   #menuBtn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;
     border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--evergreen);cursor:pointer;}
   .contact-grid{grid-template-columns:1fr;}
