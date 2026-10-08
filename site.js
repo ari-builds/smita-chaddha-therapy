@@ -32,7 +32,13 @@
     document.body.classList.remove("locked");
     if (btn) btn.setAttribute("aria-expanded", "false");
   }
-  if (btn) btn.addEventListener("click", openMenu);
+  if (btn) {
+    btn.addEventListener("click", function () {
+      if (!menu) return;
+      if (menu.classList.contains("open")) closeMenu();
+      else openMenu();
+    });
+  }
   if (close) close.addEventListener("click", closeMenu);
   if (menu) menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
