@@ -52,7 +52,8 @@
 
   // Gentle parallax on the full-bleed media layer ONLY. It is absolutely
   // positioned behind the scrim and content, so it can never collide with
-  // text at any scroll position.
+  // text at any scroll position. The layer is 24% oversized top and bottom,
+  // which gives it room to travel without ever exposing a gap.
   var media = document.querySelector(".hero-media");
   if (media && !reduce && window.matchMedia("(min-width: 881px)").matches) {
     var frame = null;
@@ -61,8 +62,8 @@
       frame = requestAnimationFrame(function () {
         frame = null;
         var sy = window.scrollY;
-        if (sy > window.innerHeight * 1.4) return;
-        media.style.transform = "translate3d(0," + (sy * 0.14).toFixed(2) + "px,0)";
+        if (sy > window.innerHeight * 1.5) return;
+        media.style.transform = "translate3d(0," + (sy * 0.25).toFixed(2) + "px,0)";
       });
     }, { passive: true });
   }
