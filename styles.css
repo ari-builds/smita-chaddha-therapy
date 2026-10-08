@@ -387,8 +387,7 @@ html.reveal .rv.in{opacity:1;transform:none;}
   .profile-row{flex-direction:column;align-items:flex-start;gap:10px;}
   .mobile-menu .mm-links a{font-size:2.1rem;}
 
-  /* sticky call bar replaces header buttons on phones */
-  .head-actions{display:none;}
+  /* sticky call bar replaces header buttons on phones; keep menu button visible */
   .mobile-bar{
     display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;
     left:0;right:0;bottom:0;z-index:70;padding:11px 14px calc(11px + env(safe-area-inset-bottom));
