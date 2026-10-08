@@ -141,6 +141,13 @@ p:last-child{margin-bottom:0;}
   font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#C8D2C0;
   border-top:1px solid rgba(242,236,221,.28);}
 
+/* ---------- subpage banner ---------- */
+.page-hero{background:var(--evergreen-2);color:var(--cream);padding:74px 0 58px;
+  border-bottom:1px solid rgba(242,236,221,.14);}
+.page-hero .kicker{color:var(--accent-light);}
+.page-hero h1{color:var(--cream);max-width:20ch;}
+.page-hero .page-lede{margin-top:18px;max-width:48rem;font-size:1.08rem;color:#DCE1D3;}
+
 /* ---------- stat band ---------- */
 .stats{background:var(--evergreen);color:var(--cream);border-top:1px solid rgba(242,236,221,.14);}
 .stats .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
@@ -369,6 +376,8 @@ html.reveal .rv.in{opacity:1;transform:none;}
   .kicker{margin-bottom:.9em;}
   .card,.feature{padding:22px 18px;}
   .owner-tools{flex-direction:column;align-items:flex-start;gap:8px;}
+  .page-hero{padding:58px 0 44px;}
+  .page-hero h1{font-size:clamp(2.5rem,11vw,3.4rem);}
   .hero-foot{position:static;transform:none;max-width:none;margin:8px 0 0;padding-top:16px;}
   .hero-foot span:last-child{display:none;}
   .fee-table thead{display:none;}
